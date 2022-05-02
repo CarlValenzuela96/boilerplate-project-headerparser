@@ -28,8 +28,10 @@ app.get("/api/hello", function (req, res) {
 app.get("/api/whoami", function (req, res) {
 
   let ipaddress = req.ip
-  let language = req.language
-  let software = "s"
+  let language = req.headers['accept-language']
+  let software = req.headers['user-agent']
+
+  // console.log(req.headers)
 
   res.json({ ipaddress, language, software });
 });
